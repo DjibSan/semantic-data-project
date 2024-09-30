@@ -1,38 +1,31 @@
-# Transformation de Données Ouvertes en Données Sémantiques
+# Projet de Transformation de Données Ouvertes en Données Sémantiques
 
 ## Objectif du projet
 
-Ce projet a pour objectif de transformer les données ouvertes en données sémantiques et de les lier au cloud de "Linked Data: Connect Distributed Data across the Web". Le projet suit plusieurs étapes et est réalisé en groupe.
+L'objectif de ce projet est de transformer un jeu de données ouvertes en données sémantiques et de les lier au cloud "Linked Data : Connect Distributed Data across the Web". Le projet inclut plusieurs étapes, telles que la transformation des données, l'installation d'un serveur local pour héberger les données sémantiques, et l'exécution de requêtes SPARQL pour interroger ces données.
 
-## Structure du Projet
+## Données utilisées
 
-- **Étape 1 : Choix des données et transformation en données sémantiques**
-  - Dataset choisi : **Airports, Airlines, Planes, and Routes** de Kaggle.
-  - Transformation des données en RDF en utilisant les vocabulaires adaptés depuis le moteur de recherche LOV ([Linking Open Vocabularies](https://lov.linkeddata.es/dataset/lov/)).
-  - Mise en place d'un serveur **Apache Jena Fuseki** pour héberger et interroger les données RDF.
+Bien que le dataset choisi comporte quatre fichiers, nous avons décidé de nous concentrer exclusivement sur **Airports.csv**. Ce fichier contient des informations détaillées sur les aéroports du monde entier, notamment :
 
-- **Étape 2 : Requêtes SPARQL**
-  - Nous avons proposé deux requêtes SPARQL intéressantes :
-    - Requête 1 : [Lien vers query1.rq](queries/query1.rq)
-    - Requête 2 : [Lien vers query2.rq](queries/query2.rq)
+- **Nom de l'aéroport** : Le nom officiel de l'aéroport.
+- **Code IATA/ICAO** : Codes standardisés pour identifier les aéroports.
+- **Localisation géographique** : Latitude, longitude, et altitude.
+- **Ville et pays** : Localisation géographique de l'aéroport.
 
-- **Étape 3 : Lier les données à celles des autres groupes**
-  - Collaboration avec d'autres groupes pour lier les données sémantiques.
+Les autres fichiers du dataset (Airlines.csv, Planes.csv, Routes.csv) contiennent des informations sur les compagnies aériennes, les modèles d'avions et les routes, mais pour ce projet, nous allons nous concentrer uniquement sur la transformation et l'interrogation des données contenues dans **Airports.csv**.
 
-- **Étape 4 : Lier les données au Linked Data Cloud**
-  - Ajout de propriétés et de liens pour connecter nos données au réseau de Linked Data.
+## Étapes du projet
 
-- **Étape 5 : Description des datasets avec vocabulaire VOID**
-  - Utilisation du vocabulaire VOID pour décrire les datasets RDF.
-
-## Installation et Configuration de Fuseki
-
-1. **Installation du serveur Fuseki** :
-   Téléchargez et installez **Apache Jena Fuseki** en suivant les instructions [ici](https://jena.apache.org/documentation/fuseki2/).
+1. **Choix du dataset** : Nous avons sélectionné le dataset **Airports, Airlines, Planes, and Routes** pour sa richesse et sa pertinence dans le domaine de l'aviation mondiale.
+2. **Focalisation sur Airports.csv** : Malgré les autres fichiers du dataset, nous avons choisi de travailler uniquement sur les données des aéroports pour simplifier l'analyse et mieux comprendre les caractéristiques géographiques des aéroports dans le monde.
+3. **Transformation en données sémantiques** : Nous avons transformé les données de **Airports.csv** en RDF (Resource Description Framework) en utilisant des vocabulaires standards.
+4. **Requêtes SPARQL** : Après avoir transformé les données, nous avons mis en place un serveur **Apache Jena Fuseki** pour héberger les données et exécuter des requêtes SPARQL afin d'extraire des informations pertinentes sur les aéroports.
    
-2. **Configuration** :
-   Copiez le fichier de configuration `config.ttl` dans le dossier `fuseki/` de ce dépôt.
+## Source des données
 
-3. **Lancement du serveur** :
-   ```bash
-   ./fuseki-server --config=fuseki/config.ttl
+- **Kaggle Dataset** : [Airports, Airlines, Planes, and Routes](https://www.kaggle.com/datasets/ahmadrafiee/airports-airlines-planes-and-routes-update-2024)
+
+## Licence
+
+
