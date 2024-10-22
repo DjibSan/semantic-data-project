@@ -25,7 +25,7 @@ f = open("airport.ttl", "a")
 g = Graph()
 
 
-with open('airports.csv', newline='\n', encoding="utf-8") as csvfile: #ouvre le fichier csv
+with open('data/airports.csv', newline='\n', encoding="utf-8") as csvfile: #ouvre le fichier csv
     spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
     
     for row in spamreader: # Pour chaque ligne
