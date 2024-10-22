@@ -54,6 +54,10 @@ WHERE {
            ns1:inCountry ?country .
 }
 
+# requete a venir avec jointures des dataset 
+# compter le nombre d'accidents qui se produisent à proximité de chaque aéroport.
+# Lister les détails des accidents associés à un aéroport spécifique
+# Lister les aéroports et les conditions météorologiques des accidents à proximité
 
 
 
