@@ -58,6 +58,7 @@ WHERE {
 # compter le nombre d'accidents qui se produisent à proximité de chaque aéroport.
 # Lister les détails des accidents associés à un aéroport spécifique
 # Lister les aéroports et les conditions météorologiques des accidents à proximité
+# la periode de l'année  le nombre d'accidents elevé à cote d un aeroports.
 
 
 
