@@ -1,1 +1,35 @@
+PREFIX ex: <http://example.org/airports#>
+#Lister tous les aéroports dans un pays donné
+SELECT ?name ?city
+WHERE {
+  ?airport ex:Country "France" ;
+           ex:Name ?name ;
+           ex:City ?city ;
+           ex:IATA ?iata ;
+           ex:ICAO ?icao .
+}
+
+ORDER BY DESC(?count)
+
+#Trouver les aéroports situés à une certaine altitude (au-dessus de 500 mètres)
+SELECT ?name ?city ?country ?altitude
+WHERE {
+  ?airport ex:Altitude ?altitude ;
+           ex:Name ?name ;
+           ex:City ?city ;
+           ex:Country ?country .
+  FILTER(?altitude > 500)
+}
+ORDER BY DESC(?altitude)
+
+#trouver un aeroport a partir de la lonitude latittude( autour de 48.85, 2.35 pour Paris )
+SELECT ?name ?city ?latitude ?longitude
+WHERE {
+  ?airport ex:Latitude ?latitude ;
+           ex:Longitude ?longitude ;
+           ex:Name ?name ;
+           ex:City ?city .
+  FILTER(ABS(?latitude - 48.85) < 0.5 && ABS(?longitude - 2.35) < 0.5)
+}
+
 
