@@ -1,0 +1,11 @@
+PREFIX cnt: <http://www.w3.org/2011/content#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schemas#>
+prefix ns1: <http://sw-portal.deri.org/ontologies/swportal#>
+prefix cntry: <http://fr.dbpedia.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?sub ?nom WHERE {
+?sub ns1:inCountry "France" .
+?sub foaf:name ?nom .
+}
