@@ -1,0 +1,35 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ct: <http://data.linkedct.org/resource/linkedct/>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX geoAcc: <https://www.geonames.org/ontology#>
+PREFIX ctry: <http://sw-portal.deri.org/ontologies/swportal#>
+PREFIX country: <http://fr.dbpedia.org/resource/>
+PREFIX schema: <https://schema.org/>
+
+# Compter les accidents à environ 10 km autour des aéroports français
+SELECT ?nom (COUNT(?accident) AS ?accident_count) ?lat_airport ?long_airport WHERE {
+  # Informations sur les aéroports en France
+  ?airport geo:lat ?lat_airport ;
+           geo:long ?long_airport ;
+           ctry:inCountry ?country ;
+           foaf:name ?nom
+  
+  # Filtrer pour les aéroports en France uniquement
+  FILTER(?country = "France")
+  
+  # Informations sur les accidents
+  ?accident geoAcc:latitude ?lat_accident ;
+            geoAcc:longitude ?long_accident ;
+            schema:identifier ?x .
+            
+  # Filtrer par proximité géographique (environ 10 km)
+  FILTER(ABS(xsd:float(?lat_airport) - ?lat_accident) <= 0.18 && ABS(xsd:float(?long_airport) - ?long_accident) <= 0.18 && ABS(xsd:float(?lat_airport) - ?lat_accident) >= 0.09 && ABS(xsd:float(?long_airport) - ?long_accident) >= 0.09)
+  
+} 
+GROUP BY ?nom ?lat_airport ?long_airport
+LIMIT 300

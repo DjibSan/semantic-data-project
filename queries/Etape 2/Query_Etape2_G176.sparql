@@ -1,0 +1,21 @@
+PREFIX ex: <http://exemple.org/#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX ns2: <http://sw-portal.deri.org/ontologies/swportal#>
+
+SELECT ?pays ?nomPays (AVG(?emission) AS ?moyenneEmission) (COUNT(DISTINCT ?aeroport) AS ?nombreAeroports)
+WHERE {
+  # Données sur les émissions par ville
+  ?ville rdf:type dbo:city ;
+         ex:hasMoyEmission ?emission ;
+         dbo:country ?pays .
+
+  ?pays foaf:name ?nomPays .
+
+  # Données sur les aéroports
+  ?aeroport ns2:inCountry ?nomPays .
+}
+GROUP BY ?pays ?nomPays
+LIMIT 100

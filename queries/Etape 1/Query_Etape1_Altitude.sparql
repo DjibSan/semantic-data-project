@@ -1,0 +1,12 @@
+PREFIX cnt: <http://www.w3.org/2011/content#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schemas#>
+PREFIX ns1: <http://dbpedia.org/ontology/>
+prefix cntry: <http://fr.dbpedia.org/resource/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+SELECT ?alti ?nom WHERE {
+?sub ns1:altitude ?alti .
+FILTER(?alti < "100")
+?sub foaf:name ?nom .
+}
